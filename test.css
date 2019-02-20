@@ -1,0 +1,84 @@
+/*font-family: 'Bangers', cursive;
+font-family: 'Mouse Memoirs', sans-serif;
+font-family: 'Wellfleet', cursive;
+*/
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Wellfleet', sans-serif;
+  letter-spacing: 0px;
+  font-size: 16px;
+  color: #6e726e;
+  font-weight: 400;
+  line-height: 27px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #121312;
+  margin: 0px 0px 15px 0px;
+  font-weight: 400;
+  font-family: 'Bangers', serif;
+}
+.nr {
+  font-family: 'Wellfleet', cursive;
+  font-size: 18px;
+
+}
+.tagline {
+  font-family: 'Bangers', cursive;
+  font-size: 30px;
+color: rgb(241, 40, 215);
+}
+
+/*ANIMATION PICTURES FRANCHISES*/
+.media-card:hover {
+  transform: scale(1.03);
+
+  box-shadow: 0 4px 8px 0 #ededed;
+}
+
+.magazine:hover, .web:hover, .transit:hover, .direct-mail:hover {
+  color: #317efc;
+  font-weight: bold;
+}
+
+.favorite:hover {
+  transform: scale(1.3);
+  fill: #ffffff fill-opacity="1.0";
+}
+
+/*ANIMATION PICTURES PHOTOS*/
+.img-fluid:hover {
+  transform: scale(1.08);
+
+  box-shadow: 10px 7px 9px 0 #ededed;
+}
+
+.magazine:hover, .web:hover, .transit:hover, .direct-mail:hover {
+  color: #317efc;
+  font-weight: bold;
+}
+
+/*ANIMATION PICTURES MENU*/
+.dish-img:hover {
+  transform: scale(2.08);
+  box-shadow: 0 3px 3px 0 #317efc;
+}
+
+
+.dish-price {
+  font-family: 'Bangers', serif;
+  font-size: 16px;
+  color: #1aa644;
+}
+
+a:focus, a:hover {
+  text-decoration: none;
+  color: #1aa644;
+}
+
+/*RESTO PART*/
+/*MAP*/
+iframe {
+  margin: 15px;
+}
