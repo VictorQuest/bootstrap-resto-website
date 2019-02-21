@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Mouse+Memoirs" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Wellfleet" rel="stylesheet">
+
   <title>Nerd Restaurant</title>
 </head>
 <!---->
@@ -52,6 +53,7 @@
     </div>
   </nav>
 <!-- Navigation -->
+
   <!--Header starts now-->
   <i class="fab fa-angellist"></i>
   <div class="jumbotron jumbotron-fluid">
@@ -65,16 +67,183 @@
 
 
 
+<style>
+.OpeningHours {
+    font-family:Lucida Console;
+    padding:0 10px 0 10px;
+    display: inline-block;
+}
+.OpeningHours__Content  {
+    float:left;
+}
+.OpeningHours__Status {
+    font-size:12px;
+}
+.Day--Today {
+    color: #7Aa007;
+}
+.OpeningHours__Table tr td:first-child {
+    font-weight:bold;
+}
+.OpeningHours__Status {
+    display:block;
+    margin-top:-1em;
+    text-align:center;
+}
+.OpeningHours__Status:after {
+    content:" open at these times:";
+}
+.OpeningHours__Status--Open {
+    color:green;
+}
+.OpeningHours__Status--Open:after {
+    content:" open";
+    color: #6C0;
+}
+.OpeningHours__Status--Closed:after {
+    content:" closed";
+    color: red;
+}
+.OpeningHours__Table tr td {
+    padding:5px;
+}
+</style>
 
+<section class="OpeningHours">
+    <div class="OpeningHours__Content">
+        <div class="OpeningHours_Header">
+            <span class="OpeningHours__Status">We are</span>
+        </div>
+        <table class="OpeningHours__Table">
+            <tr class="Day--Monday" itemprop="openingHours">
+                <td>Monday</td>
+                <td class="opens">11:00</td>
+                <td>-</td>
+                <td class="closes">15:00</td>
+            </tr>
+            <tr class="Day--Tuesday" itemprop="openingHours">
+                <td>Tuesday</td>
+                <td class="opens">10:00</td>
+                <td>-</td>
+                <td class="closes">15:00</td>
+            </tr>
+            <tr class="Day--Tuesday" itemprop="openingHours">
+                <td></td>
+                <td class="opens">17:30</td>
+                <td>-</td>
+                <td class="closes">20:00</td>
+            </tr>
+            <tr class="Day--Wednesday" itemprop="openingHours">
+                <td>Wednesday</td>
+                <td class="opens">11:00</td>
+                <td>-</td>
+                <td class="closes">15:00</td>
+            </tr>
+            <tr class="Day--Thursday" itemprop="openingHours">
+                <td>Thursday</td>
+                <td class="opens">11:00</td>
+                <td>-</td>
+                <td class="closes">15:00</td>
+            </tr>
+            <tr class="Day--Friday" itemprop="openingHours">
+                <td>Friday</td>
+                <td class="opens">11:00</td>
+                <td>-</td>
+                <td class="closes">15:00</td>
+            </tr>
+            <tr class="Day--Friday" itemprop="openingHours">
+                <td></td>
+                <td class="opens">16:30</td>
+                <td>-</td>
+                <td class="closes">20:00</td>
+            </tr>
+            <tr class="Day--Saturday" itemprop="openingHours">
+                <td>Saturday</td>
+                <td class="opens">11:00</td>
+                <td>-</td>
+                <td class="closes">20:00</td>
+            </tr>
+            <tr class="Day--Sunday" itemprop="openingHours">
+                <td>Sunday</td>
+                <td colspan=2>Closed
+                    <span style='display:none' class="opens">24:00</span>
+                    <span style='display:none' class="closes">24:00</span></td>
+            </tr>
+        </table>
+    </div>
+</section>
 
+<script>
+(function(){
+    function formatTime(time){
+        var timeSplit = time.split(":"),
+            timeHours = timeSplit[0];
 
+        timeHours = timeHours < 10 ? "0" + timeHours : timeHours;
+
+        return timeHours + timeSplit[1];
+    }
+
+    var currentDate = new Date(),
+            weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            currentDay = weekday[currentDate.getDay()],
+            currentTimeHours = currentDate.getHours(),
+            currentTimeMinutes,
+            timeNow,
+            currentDaySelector,
+            openTimes,
+            closeTimes,
+            isOpen = false;
+
+    currentTimeHours = currentTimeHours < 10 ? "0" + currentTimeHours : currentTimeHours;
+    currentTimeMinutes = currentDate.getMinutes();
+    timeNow = currentTimeHours + "" + currentTimeMinutes;
+
+    currentDaySelector = ".Day--" + currentDay; //gets today's weekday and turns it into id
+    $(currentDaySelector).toggleClass("Day--Today"); //hightlights today
+
+    openTimes = $(currentDaySelector).children('.opens').map(function(){
+        return $.trim($(this).text());
+    }).get();
+
+    closeTimes = $(currentDaySelector).children('.closes').map(function(){
+        return $.trim($(this).text());
+    }).get();
+
+    $(openTimes).each(function(key, value) {
+        var openTimeFormatted = formatTime(openTimes[key]),
+                closeTimeFormatted = formatTime(closeTimes[key]);
+
+        if(timeNow >= openTimeFormatted && timeNow <= closeTimeFormatted) {
+            isOpen = true;
+        }
+    });
+
+    if (isOpen) {
+        $(".OpeningHours__Status").toggleClass("OpeningHours__Status--Open");
+    } else {
+        $(".OpeningHours__Status").toggleClass("OpeningHours__Status--Closed");
+    }
+})();
+</script>
 
 <footer>
 
+  <!--<h1>Nerd Herd Restaurant</h1>
+			<div class="footer-icons">
+				<a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">
+					<img alt="LinkedIn logo" src="images/LinkedIn.png"/></a>
+				<a href="https://www.instagram.com/?hl=fr" target="_blank" rel="noopener noreferrer">
+					<img alt="Instagram logo" src="images/instagram.png"/></a>
+				<a href="https://twitter.com/?lang=fr" target="_blank" rel="noopener noreferrer">
+					<img alt="Twitter logo" src="images/twitter.png"/></a>
+				<a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+					<img alt="Facebook logo" src="images/facebook.png"/></a>
+			</div> -->
 </footer>
 
 <!--JS starts now-->
-  <script src="script.js" charset="utf-8"></script>
+
   <!--JS ends now-->
 </body>
 

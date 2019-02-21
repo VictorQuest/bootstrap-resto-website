@@ -2,6 +2,7 @@
 font-family: 'Mouse Memoirs', sans-serif;
 font-family: 'Wellfleet', cursive;
 */
+
 body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -11,6 +12,10 @@ body {
   color: #6e726e;
   font-weight: 400;
   line-height: 27px;
+  background-image: url("https://cdn.pixabay.com/photo/2018/08/01/07/27/memes-3576723_960_720.png");
+  background-repeat:round;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,11 +24,21 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-family: 'Bangers', serif;
 }
+.jumbotron {
+  background-image: url("https://cdn.pixabay.com/photo/2018/08/01/07/27/memes-3576723_960_720.png");
+  background-repeat:round;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+
 .nr {
   font-family: 'Wellfleet', cursive;
   font-size: 18px;
-
 }
+
 .tagline {
   font-family: 'Bangers', cursive;
   font-size: 30px;
@@ -33,7 +48,6 @@ color: rgb(241, 40, 215);
 /*ANIMATION PICTURES FRANCHISES*/
 .media-card:hover {
   transform: scale(1.03);
-
   box-shadow: 0 4px 8px 0 #ededed;
 }
 
@@ -50,7 +64,6 @@ color: rgb(241, 40, 215);
 /*ANIMATION PICTURES PHOTOS*/
 .img-fluid:hover {
   transform: scale(1.08);
-
   box-shadow: 10px 7px 9px 0 #ededed;
 }
 
@@ -81,4 +94,38 @@ a:focus, a:hover {
 /*MAP*/
 iframe {
   margin: 15px;
+}
+ooter h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+/*HOURS*/
+
+footer {
+  background-image: url(images/swirl_pattern.png);
+  padding-top: 20px;
+  padding-bottom: 55px;
+}
+
+/*Div contained by footer
+        This Dic contains the icons for external links (LinkedIn, Instagram, Twitter, Facebook)
+        */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+/*Images representing the external links of the div (.footer-icons)
+        contained in the footer*/
+.footer-icons img {
+  height: 33px;
+  width: 33px;
+  border-radius: 50%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+footer h1 {
+  text-align: center;
 }
